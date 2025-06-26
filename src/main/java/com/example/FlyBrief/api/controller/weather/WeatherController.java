@@ -34,12 +34,12 @@ public class WeatherController {
     }
 
     @GetMapping("/summary")
-    public Map<String, String> getWeatherSummary(
+    public ApiResponse<String> getWeatherSummary(
             @RequestParam String location,
             @RequestParam String startDate,
             @RequestParam String endDate
     ) {
-        String message = weatherSummaryService.fetchWeatherSummary(location, startDate, endDate);
-        return Map.of("message", message);
+        String result = weatherSummaryService.fetchWeatherSummary(location, startDate, endDate);
+        return ApiResponse.ok(result);
     }
 }
