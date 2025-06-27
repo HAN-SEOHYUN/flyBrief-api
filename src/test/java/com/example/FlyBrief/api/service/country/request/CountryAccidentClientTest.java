@@ -38,8 +38,8 @@ class CountryAccidentClientTest {
         // then
         assertThat(news).isNotBlank();
         assertThat(news).contains("사건").contains("지진").contains("범죄").contains("테러");
-//        System.out.println("=======");
-//        System.out.println(news);
-//        System.out.println("=======");
+        System.out.println("=======");
+        System.out.println(news);
+        System.out.println("=======");
     }
 }

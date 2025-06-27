@@ -22,4 +22,10 @@ public class CountryController {
         CountryResponse result = countryService.findByIso3(iso3);
         return ApiResponse.ok(result);
     }
+
+    @GetMapping("/news")
+    public ApiResponse<String> getCountryAccidentNews(@RequestParam String iso3){
+        String result = countryService.getAccidentNewsByIso3(iso3);
+        return ApiResponse.ok(result);
+    }
 }
