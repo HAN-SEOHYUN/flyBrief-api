@@ -31,10 +31,11 @@ public class AirportDaoImpl implements AirportDao {
             WHERE airport_name_ko COLLATE utf8mb4_general_ci LIKE CONCAT('%', ?, '%')
                OR airport_name_en COLLATE utf8mb4_general_ci LIKE CONCAT('%', ?, '%')
                OR iata_code COLLATE utf8mb4_general_ci LIKE CONCAT('%', ?, '%')
+               OR country_name_ko COLLATE utf8mb4_general_ci LIKE CONCAT('%', ?, '%')
+               OR country_name_en COLLATE utf8mb4_general_ci LIKE CONCAT('%', ?, '%')
             ;
         """;
-
-        return jdbcTemplate.query(sql, new AirportRowMapper(), keyword, keyword, keyword);
+        return jdbcTemplate.query(sql, new AirportRowMapper(), keyword, keyword, keyword, keyword, keyword);
     }
 }
 
