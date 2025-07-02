@@ -18,10 +18,10 @@ public class CountryService {
         this.countryAccidentClient = countryAccidentClient;
     }
 
-    public CountryResponse findByIso3(String iso3) {
-        Country country = countryRepository.findByIso3(iso3);
+    public CountryResponse findByIataCode(String iataCode) {
+        Country country = countryRepository.findByIataCode(iataCode);
         if (country == null) {
-            throw new NoSuchElementException("해당 국가 정보를 찾을 수 없습니다: " + iso3);
+            throw new NoSuchElementException("해당 국가 정보를 찾을 수 없습니다: " + iataCode);
         }
         return CountryResponse.of(country);
     }

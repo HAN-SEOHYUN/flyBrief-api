@@ -18,8 +18,8 @@ public class CountryController {
     }
 
     @GetMapping("/info")
-    public ApiResponse<CountryResponse> getCountryInfo(@RequestParam String iso3){
-        CountryResponse result = countryService.findByIso3(iso3);
+    public ApiResponse<CountryResponse> getCountryInfo(@RequestParam String iataCode){
+        CountryResponse result = countryService.findByIataCode(iataCode);
         return ApiResponse.ok(result);
     }
 
