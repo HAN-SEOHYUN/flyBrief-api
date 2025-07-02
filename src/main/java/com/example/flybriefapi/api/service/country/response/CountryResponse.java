@@ -7,6 +7,7 @@ import lombok.Getter;
 @Getter
 public class CountryResponse {
     private String iso3;                 // 국가 ISO3 코드
+    private String iso2;                 // 국가 ISO2 코드
     private String countryNameKo;        // 국가명 (한글)
     private String countryNameEn;        // 국가명 (영문)
 
@@ -42,8 +43,9 @@ public class CountryResponse {
     private String independence;         // 독립일 또는 독립 여부
 
     @Builder
-    public CountryResponse(String iso3, String countryNameKo, String countryNameEn, String attention, String attentionPartial, String attentionNote, String control, String controlPartial, String controlNote, String limita, String limitaPartial, String limitaNote, String banYna, String banYnPartial, String banNote, String wrtDt, String capital, String population, String populationDesc, String areaKm2, String areaDesc, String language, String religion, String ethnicity, String climate, String independence) {
+    public CountryResponse(String iso3, String iso2, String countryNameKo, String countryNameEn, String attention, String attentionPartial, String attentionNote, String control, String controlPartial, String controlNote, String limita, String limitaPartial, String limitaNote, String banYna, String banYnPartial, String banNote, String wrtDt, String capital, String population, String populationDesc, String areaKm2, String areaDesc, String language, String religion, String ethnicity, String climate, String independence) {
         this.iso3 = iso3;
+        this.iso2 = iso2;
         this.countryNameKo = countryNameKo;
         this.countryNameEn = countryNameEn;
         this.attention = attention;
@@ -74,6 +76,7 @@ public class CountryResponse {
     public static CountryResponse of(Country country) {
         return CountryResponse.builder()
                 .iso3(country.getIso3())
+                .iso2(country.getIso2())
                 .countryNameKo(country.getCountryNameKo())
                 .countryNameEn(country.getCountryNameEn())
                 .attention(country.getAttention())
