@@ -15,7 +15,7 @@ public class CountryDaoImpl implements CountryDao {
     }
 
     @Override
-    public Country findByIso3(String iso3) {
+    public Country findByIataCode(String iataCode) {
         String sql = """
                 SELECT
                     ca.iso3,                        -- 국가 코드 (ISO 3자리)
@@ -48,15 +48,14 @@ public class CountryDaoImpl implements CountryDao {
                     ci.ethnicity,                 -- 민족
                     ci.climate,                   -- 기후
                     ci.independence              -- 건국일자 (독립일 등)
-                FROM
-                    country_advisory ca
-                JOIN
-                    country_info ci 
+                FROM country_advisory ca
+                JOIN country_info ci 
                 ON ca.iso3 = ci.iso3
-                WHERE
-                    ca.iso3 = ?
+                JOIN airport_info ai
+                ON ci.iso3 = ai.iso3
+                WHERE ai.iata_code = ?
                 ;
                 """;
-        return jdbcTemplate.queryForObject(sql, new CountryRowMapper(), iso3);
+        return jdbcTemplate.queryForObject(sql, new CountryRowMapper(), iataCode);
     }
 }

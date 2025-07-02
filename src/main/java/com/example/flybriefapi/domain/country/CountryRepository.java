@@ -13,7 +13,7 @@ public class CountryRepository implements CountryDao {
     }
 
     @Override
-    public Country findByIso3(String iso3) {
-        return countryDao.findByIso3(iso3);
+    public Country findByIataCode(String iataCode) {
+        return countryDao.findByIataCode(iataCode);
     }
 }
