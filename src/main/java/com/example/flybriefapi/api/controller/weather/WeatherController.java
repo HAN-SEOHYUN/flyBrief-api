@@ -24,11 +24,11 @@ public class WeatherController {
 
     @GetMapping("/forecast")
     public ApiResponse<List<WeatherResponse>> getWeatherForecast(
-            @RequestParam String location,
+            @RequestParam String iataCode,
             @RequestParam String startDate,
             @RequestParam String endDate
     ) {
-        List<WeatherResponse> results = weatherService.getWeatherForecast(location, startDate, endDate);
+        List<WeatherResponse> results = weatherService.getWeatherForecast(iataCode, startDate, endDate);
         return ApiResponse.ok(results);
     }
 
