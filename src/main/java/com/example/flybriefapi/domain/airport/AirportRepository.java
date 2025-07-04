@@ -28,4 +28,9 @@ public class AirportRepository implements AirportDao {
     public String findCityNameByIataCode(String iataCode) {
         return airportDao.findCityNameByIataCode(iataCode);
     }
+
+    @Override
+    public String findIso3ByIataCode(String iataCode) {
+        return airportDao.findIso3ByIataCode(iataCode);
+    }
 }

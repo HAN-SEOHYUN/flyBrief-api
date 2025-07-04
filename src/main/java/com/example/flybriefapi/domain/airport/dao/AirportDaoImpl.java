@@ -52,6 +52,20 @@ public class AirportDaoImpl implements AirportDao {
             return null;
         }
     }
+
+    @Override
+    public String findIso3ByIataCode(String iataCode) {
+        String sql = """
+            SELECT iso3
+            FROM airport_info
+            WHERE iata_code = ?
+            """;
+        try {
+            return jdbcTemplate.queryForObject(sql, String.class, iataCode);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
 }
 
 

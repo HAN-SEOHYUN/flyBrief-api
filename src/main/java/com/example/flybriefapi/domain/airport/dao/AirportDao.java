@@ -8,4 +8,5 @@ public interface AirportDao {
     List<Airport> findAll();
     List<Airport> findByKeyword(String keyword);
     String findCityNameByIataCode(String iataCode);
+    String findIso3ByIataCode(String iataCode);
 }

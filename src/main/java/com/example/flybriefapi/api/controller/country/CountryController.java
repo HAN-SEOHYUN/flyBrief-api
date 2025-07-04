@@ -24,8 +24,8 @@ public class CountryController {
     }
 
     @GetMapping("/news")
-    public ApiResponse<String> getCountryAccidentNews(@RequestParam String iso3){
-        String result = countryService.getAccidentNewsByIso3(iso3);
+    public ApiResponse<String> getCountryAccidentNews(@RequestParam String iataCode){
+        String result = countryService.getAccidentNewsByIataCode(iataCode);
         return ApiResponse.ok(result);
     }
 }
