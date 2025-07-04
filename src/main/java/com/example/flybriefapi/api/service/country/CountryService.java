@@ -2,6 +2,7 @@ package com.example.flybriefapi.api.service.country;
 
 import com.example.flybriefapi.api.service.country.request.CountryAccidentClient;
 import com.example.flybriefapi.api.service.country.response.CountryResponse;
+import com.example.flybriefapi.domain.airport.AirportRepository;
 import com.example.flybriefapi.domain.country.Country;
 import com.example.flybriefapi.domain.country.CountryRepository;
 import org.springframework.stereotype.Service;
@@ -12,10 +13,12 @@ import java.util.NoSuchElementException;
 public class CountryService {
     private final CountryRepository countryRepository;
     private final CountryAccidentClient countryAccidentClient;
+    private final AirportRepository airportRepository;
 
-    public CountryService(CountryRepository countryRepository, CountryAccidentClient countryAccidentClient) {
+    public CountryService(CountryRepository countryRepository, CountryAccidentClient countryAccidentClient, AirportRepository airportRepository) {
         this.countryRepository = countryRepository;
         this.countryAccidentClient = countryAccidentClient;
+        this.airportRepository = airportRepository;
     }
 
     public CountryResponse findByIataCode(String iataCode) {
@@ -26,7 +29,8 @@ public class CountryService {
         return CountryResponse.of(country);
     }
 
-    public String getAccidentNewsByIso3 (String iso3) {
+    public String getAccidentNewsByIataCode(String iataCode) {
+        String iso3 = airportRepository.findIso3ByIataCode(iataCode);
         return countryAccidentClient.getAccidentNewsByIso3(iso3);
     }
 }
