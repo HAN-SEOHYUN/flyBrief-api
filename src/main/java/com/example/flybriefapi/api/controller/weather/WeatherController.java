@@ -34,11 +34,11 @@ public class WeatherController {
 
     @GetMapping("/summary")
     public ApiResponse<String> getWeatherSummary(
-            @RequestParam String location,
+            @RequestParam String iataCode,
             @RequestParam String startDate,
             @RequestParam String endDate
     ) {
-        String result = weatherSummaryService.fetchWeatherSummary(location, startDate, endDate);
+        String result = weatherSummaryService.fetchWeatherSummary(iataCode, startDate, endDate);
         return ApiResponse.ok(result);
     }
 }
