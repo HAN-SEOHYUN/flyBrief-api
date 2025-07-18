@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.example'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1-snapshot'
 
 
 java {
@@ -42,4 +42,16 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+jar {
+	enabled = false // 일반 jar 비활성화
+	archiveBaseName.set('flybrief-api')
+	archiveVersion.set('0.0.1-snapshot')
+	archiveClassifier.set('')
+}
+
+bootJar {
+	archiveBaseName.set('flybrief-api')
+	archiveVersion.set('0.0.1-snapshot')
 }
